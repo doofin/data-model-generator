@@ -3,7 +3,7 @@ package com.datawizards.dmg.service
 import com.datawizards.dmg.DataModelGenerator
 import com.datawizards.dmg.TestModel._
 import com.datawizards.dmg.dialects._
-import com.datawizards.esclient.dto.SearchResult
+import com.datawizards.esclient.dto.{AliasActions, SearchResult}
 import com.datawizards.esclient.repository.ElasticsearchRepository
 import org.junit.runner.RunWith
 import org.scalatest.FunSuite
@@ -65,6 +65,14 @@ class CreateElasticsearchIndexTest extends FunSuite {
 
       override def search[T](indexName: String)(implicit evidence$3: ClassTag[T], evidence$4: universe.TypeTag[T]): SearchResult[T] =
         SearchResult(0, Traversable.empty)
+
+      override def updateAliases(actions: AliasActions): Unit = {
+        /* do nothing */
+      }
+
+      override def getAliasToIndexMappings: Map[String, String] = {
+        Map()
+      }
     }
   }
 
