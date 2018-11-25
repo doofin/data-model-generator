@@ -2,9 +2,9 @@ name := "data-model-generator"
 
 organization := "com.github.piotr-kalanski"
 
-version := "0.7.7"
+version := "0.7.7.12"
 
-scalaVersion := "2.11.8"
+scalaVersion := "2.12.7"
 
 licenses := Seq("Apache License, Version 2.0" -> url("http://www.apache.org/licenses/LICENSE-2.0.txt"))
 
@@ -38,6 +38,7 @@ coverageExcludedPackages := "com.datawizards.dmg.examples.*"
 
 publishMavenStyle := true
 
+/*
 publishTo := {
   val nexus = "https://oss.sonatype.org/"
   if (isSnapshot.value)
@@ -45,3 +46,4 @@ publishTo := {
   else
     Some("releases"  at nexus + "service/local/staging/deploy/maven2")
 }
+*/
