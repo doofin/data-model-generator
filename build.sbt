@@ -1,5 +1,7 @@
 name := "data-model-generator"
 
+resolvers += "jitpack" at "https://jitpack.io"
+
 organization := "com.github.piotr-kalanski"
 
 version := "0.7.7.12"
@@ -29,8 +31,8 @@ developers := List(
 libraryDependencies ++= Seq(
   "org.scala-lang" % "scala-reflect" % "2.11.8",
   "log4j" % "log4j" % "1.2.17",
-  "com.github.piotr-kalanski" %% "es-client" % "0.2.1",
-  "org.scalatest" %% "scalatest" % "2.2.6" % "test",
+  "com.github.jordanburke" % "es-client" % "v0.3.0.12.1",
+  "org.scalatest" %% "scalatest" % "3.0.5" % "test",
   "junit" % "junit" % "4.10" % "test"
 )
 
