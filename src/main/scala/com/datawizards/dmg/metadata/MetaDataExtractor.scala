@@ -69,7 +69,10 @@ object MetaDataExtractor {
     case t if t <:< definitions.BooleanTpe => BooleanType
     case t if definedByConstructorParams(t) => extractClassMetaData(t)
     case other =>
-      throw new UnsupportedOperationException(s"MetaData for type $other is not supported")
+      System.err.println(s"MetaData for type $other is not supported. Using String Default")
+      StringType
+    //case other =>
+    //  throw new UnsupportedOperationException(s"MetaData for type $other is not supported")
   }
 
   private def extractClassMetaData(tpe: `Type`): ClassTypeMetaData = {
