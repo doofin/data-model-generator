@@ -3,6 +3,10 @@ package com.datawizards.dmg.dialects
 import com.datawizards.dmg.metadata._
 
 object PostgresDialect extends DatabaseDialect {
+
+  override protected def createTableExpression(classTypeMetaData: ClassTypeMetaData): String =
+    s"CREATE TABLE ${camelToSnake(classTypeMetaData.typeName)}"
+
   override def intType: String = "INT"
 
   override def stringType: String = "TEXT"
@@ -30,38 +34,38 @@ object PostgresDialect extends DatabaseDialect {
   override def bigIntegerType: String = "BIGINT"
 
   override def generateArrayTypeExpression(elementTypeExpression: String): String = {
-    log.warn("MySQL doesn't support ARRAY type. Column converted to JSONB.")
+    log.warn("ARRAY Type not supported yet. Column converted to JSONB.")
     "JSONB"
   }
 
   override def generateClassTypeExpression(classTypeMetaData: ClassTypeMetaData, fieldNamesWithExpressions: Iterable[(String, String)]): String = {
-    log.warn("MySQL doesn't support Struct type. Column converted to JSONB")
+    log.warn("Postgres doesn't support Struct type. Column converted to JSONB")
     "JSONB"
   }
 
   override def generateMapTypeExpression(keyExpression: String, valueExpression: String): String = {
-    log.warn("MySQL doesn't support Map type. Column converted to JSONB")
+    log.warn("Postgres doesn't support Map type. Column converted to JSONB")
     "JSONB"
   }
 
-  override def toString: String = "MySQLDialect"
+  override def toString: String = "PostgresDialect"
 
   override protected def fieldAdditionalExpressions(f: ClassFieldMetaData): String =
     notNullExpression(f) +
-    commentExpression(f)
+      commentExpression(f)
 
   override protected def additionalTableProperties(classTypeMetaData: ClassTypeMetaData): String =
-    if(comment(classTypeMetaData).isDefined)
+    if (comment(classTypeMetaData).isDefined)
       s"\nCOMMENT = '${comment(classTypeMetaData).get}'"
     else ""
 
   override protected def additionalTableExpressions(classTypeMetaData: ClassTypeMetaData): String = ""
 
   private def notNullExpression(f: ClassFieldMetaData): String =
-    if(notNull(f)) " NOT NULL" else ""
+    if (notNull(f)) " NOT NULL" else ""
 
   private def commentExpression(f: ClassFieldMetaData): String =
-    if(comment(f).isEmpty) "" else s" COMMENT '${comment(f).get}'"
+    if (comment(f).isEmpty) "" else s" COMMENT '${comment(f).get}'"
 
   override protected def reservedKeywords = Seq(
     "ALL",
