@@ -4,7 +4,7 @@ resolvers += "jitpack" at "https://jitpack.io"
 
 organization := "com.github.piotr-kalanski"
 
-version := "0.7.7.12"
+version := "0.7.7.14"
 
 scalaVersion := "2.12.7"
 
