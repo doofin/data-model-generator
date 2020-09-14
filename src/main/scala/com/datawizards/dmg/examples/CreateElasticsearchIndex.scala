@@ -5,8 +5,8 @@ import com.datawizards.dmg.service.ElasticsearchServiceImpl
 
 object CreateElasticsearchIndex extends App {
   val service = new ElasticsearchServiceImpl("http://localhost:9200")
-  service.createIndex[Person]("person")
+//  service.createIndex[Person]("person")
 
   println("Index:")
-  println(service.getIndexSettings("person"))
+//  println(service.getIndexSettings("person"))
 }

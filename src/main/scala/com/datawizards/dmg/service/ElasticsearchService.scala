@@ -1,13 +1,13 @@
 package com.datawizards.dmg.service
 
 import com.datawizards.dmg.{DataModelGenerator, dialects}
-import com.datawizards.esclient.repository.ElasticsearchRepository
+//import com.datawizards.esclient.repository.ElasticsearchRepository
 import org.apache.log4j.Logger
 
 import scala.reflect.ClassTag
 import scala.reflect.runtime.universe.TypeTag
 
-trait ElasticsearchService {
+trait ElasticsearchService /*{
   private val log = Logger.getLogger(getClass.getName)
   protected val repository: ElasticsearchRepository
 
@@ -47,3 +47,4 @@ trait ElasticsearchService {
   def getIndexSettings(indexName: String): String =
     repository.getIndexSettings(indexName)
 }
+*/
